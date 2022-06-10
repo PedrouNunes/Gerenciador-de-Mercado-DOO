@@ -4,7 +4,7 @@ package trabalho1;
 
 public class Cliente extends Pessoa{
 
-    public Cliente(String nome, int cpf) {
+    public Cliente(String nome, long cpf) {
         super(nome, cpf);
     }
 
@@ -16,7 +16,7 @@ public class Cliente extends Pessoa{
         this.nome = nome;
     }
 
-    public int getCpf() {
+    public long getCpf() {
         return cpf;
     }
 

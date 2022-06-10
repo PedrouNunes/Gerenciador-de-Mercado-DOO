@@ -188,7 +188,6 @@ private Cliente pessoa;
                contTotalPagar = contTotalPagar +  TelaPrincipal.listaCarrinho.get(i).getPreco();
                lbPagar.setText("<R$" + contTotalPagar + ">");
            }
-           TelaPrincipal.supermercado = new Supermercado(pessoa, contTotalPagar);
                 }
     }//GEN-LAST:event_btCalcularMouseClicked
 

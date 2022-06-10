@@ -3,14 +3,14 @@ package trabalho1;
 
 import java.awt.BorderLayout;
 import static java.lang.Integer.parseInt;
+import static java.lang.Long.parseLong;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 
 public class TelaIdentificacao extends javax.swing.JPanel {
-
-   
     public TelaIdentificacao() {
         initComponents();
     }
@@ -140,18 +140,19 @@ public class TelaIdentificacao extends javax.swing.JPanel {
 
     private void btCadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btCadastrarMouseClicked
 
-        
         try{
-            if (!tfNome.getText().isEmpty() || !tfCPF.getText().isEmpty()) {
+            if (!tfNome.getText().equals("")|| !tfCPF.getText().equals("")) {
                 if (rbAdministrador.isSelected()) {
+                     long cpf = parseLong(tfCPF.getText());
+                    Pessoa a = new Administrador(tfNome.getText(), cpf);
                     TelaPrincipal.tCadastroProduto = new TelaCadastroProdutos();     
                     JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this); 
                     janela.getContentPane().remove(TelaPrincipal.tIdentificacao); 
                     janela.add(TelaPrincipal.tCadastroProduto, BorderLayout.CENTER); 
                     janela.pack();
-                }else{
-                    if (rbCliente.isSelected()) {
-                    int cpf = parseInt(tfCPF.getText());
+                }
+                if (rbCliente.isSelected()) {
+                    long cpf = parseLong(tfCPF.getText());
                     Pessoa p = new Cliente(tfNome.getText(), cpf);
                     TelaPrincipal.tComprar = new TelaComprar(p);     
                     JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this); 
@@ -159,8 +160,6 @@ public class TelaIdentificacao extends javax.swing.JPanel {
                     janela.add(TelaPrincipal.tComprar, BorderLayout.CENTER); 
                     janela.pack();
                 }
-                }
-                
             }else{
                 throw new Exception();
             }

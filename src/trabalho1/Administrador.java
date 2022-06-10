@@ -3,7 +3,7 @@ package trabalho1;
 
 public class Administrador extends Pessoa{
 
-    public Administrador(String nome, int cpf) {
+    public Administrador(String nome, long cpf) {
         super(nome, cpf);
     }
 
@@ -15,7 +15,7 @@ public class Administrador extends Pessoa{
         this.nome = nome;
     }
 
-    public int getCpf() {
+    public long getCpf() {
         return cpf;
     }
 
