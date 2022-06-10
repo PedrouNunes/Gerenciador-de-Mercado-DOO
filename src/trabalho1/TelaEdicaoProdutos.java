@@ -148,12 +148,20 @@ private Produto produto;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btEditarMouseClicked
-        this.produto.setNome(tfNome.getText());
-        double preco = parseDouble(tfPreco.getText());
-        this.produto.setPreco(preco);
-        this.produto.setCategoria(cbTipo.getSelectedItem().toString());
+        try{
+            if(!tfNome.getText().isEmpty()|| !tfPreco.getText().isEmpty()){
+                this.produto.setNome(tfNome.getText());
+                double preco = parseDouble(tfPreco.getText());
+                this.produto.setPreco(preco);
+                this.produto.setCategoria(cbTipo.getSelectedItem().toString());
+                JOptionPane.showMessageDialog(null, "O produto foi Editado com sucesso!", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                throw new Exception();
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Edite o produto primeiro!", "Erro!", JOptionPane.ERROR_MESSAGE);
+        }
         
-        JOptionPane.showMessageDialog(null, "O produto foi Editado com sucesso!", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btEditarMouseClicked
 
     private void btVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btVoltarMouseClicked
