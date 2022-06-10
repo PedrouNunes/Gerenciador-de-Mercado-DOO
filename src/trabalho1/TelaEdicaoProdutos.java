@@ -149,12 +149,13 @@ private Produto produto;
 
     private void btEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btEditarMouseClicked
         try{
-            if(!tfNome.getText().isEmpty()|| !tfPreco.getText().isEmpty()){
+            if(!tfNome.getText().equals("") && !tfPreco.getText().equals("")){
                 this.produto.setNome(tfNome.getText());
                 double preco = parseDouble(tfPreco.getText());
                 this.produto.setPreco(preco);
                 this.produto.setCategoria(cbTipo.getSelectedItem().toString());
                 JOptionPane.showMessageDialog(null, "O produto foi Editado com sucesso!", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
+                lbProduto.setText(this.produto.getNome());
             }else{
                 throw new Exception();
             }
