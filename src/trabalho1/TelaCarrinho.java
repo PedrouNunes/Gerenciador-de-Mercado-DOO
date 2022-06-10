@@ -38,6 +38,7 @@ private Cliente pessoa;
         jLabel2 = new javax.swing.JLabel();
         btNotaFiscal = new javax.swing.JButton();
         btCalcular = new javax.swing.JButton();
+        btRemover = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 255));
 
@@ -114,16 +115,25 @@ private Cliente pessoa;
             }
         });
 
+        btRemover.setText("Remover Item do Carrinho");
+        btRemover.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btRemoverMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btNotaFiscal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btCalcular, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(btCalcular, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btRemover, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btNotaFiscal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(48, 48, 48))
         );
         layout.setVerticalGroup(
@@ -132,7 +142,9 @@ private Cliente pessoa;
             .addGroup(layout.createSequentialGroup()
                 .addGap(149, 149, 149)
                 .addComponent(btNotaFiscal)
-                .addGap(58, 58, 58)
+                .addGap(18, 18, 18)
+                .addComponent(btRemover)
+                .addGap(18, 18, 18)
                 .addComponent(btCalcular)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -144,13 +156,13 @@ private Cliente pessoa;
         int row = this.tb_Carrinho.getSelectedRow();
         temp = this.tb_Carrinho.getModel().getValueAt(row, column);
         
-        Produto p = null;
+        Produto c = null;
         try{
             if(temp != null){
                 this.selecionado = temp.toString();
                 for(int i=0; i<TelaPrincipal.listaProdutos.size(); i++){
                     if(this.selecionado.equals(TelaPrincipal.listaProdutos.get(i).getNome())){
-                        p = (Produto) TelaPrincipal.listaProdutos.get(i);
+                        c = (Produto) TelaPrincipal.listaProdutos.get(i);
                     }
                 }
             }
@@ -180,10 +192,45 @@ private Cliente pessoa;
                 }
     }//GEN-LAST:event_btCalcularMouseClicked
 
+    private void btRemoverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btRemoverMouseClicked
+         switch(JOptionPane.showConfirmDialog(this, "Continuar?")){
+            case 0: 
+        Object temp;
+        int column = 0;
+        int row = this.tb_Carrinho.getSelectedRow();  
+        temp = this.tb_Carrinho.getModel().getValueAt(row, column); 
+        Produto c = null;
+        try{
+            if(temp != null){
+                this.selecionado = temp.toString();
+                for(int i=0; i<TelaPrincipal.listaCarrinho.size(); i++){  
+                    if(this.selecionado.equals(TelaPrincipal.listaCarrinho.get(i).getNome())){  
+                        this.model.removeRow(i);
+                        c = (Produto) TelaPrincipal.listaCarrinho.remove(i);
+                    }
+                }
+                contTotalPagar -= c.getPreco();
+                lbPagar.setText("<R$" + contTotalPagar + ">");
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Selecione um Produto da tabela!", "Erro!", JOptionPane.ERROR_MESSAGE);
+        }
+            break;
+        }
+        if (TelaPrincipal.listaProdutos.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Todos os produtos foram excluidos do carrinho!", "Remoção!", JOptionPane.INFORMATION_MESSAGE);
+            JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this);
+            janela.getContentPane().removeAll();
+            janela.add(TelaPrincipal.tCadastroProduto, BorderLayout.CENTER);
+            janela.pack();  
+        }
+    }//GEN-LAST:event_btRemoverMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCalcular;
     private javax.swing.JButton btNotaFiscal;
+    private javax.swing.JButton btRemover;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
