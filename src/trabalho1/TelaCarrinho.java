@@ -17,6 +17,13 @@ private Cliente pessoa;
         this.pessoa = (Cliente) p;
          this.model = (DefaultTableModel) this.tb_Carrinho.getModel();
         inicializaTabela();
+        
+         if (TelaPrincipal.listaCarrinho.isEmpty() == false) {
+           for (int i = 0; i < TelaPrincipal.listaCarrinho.size(); i++) {
+               contTotalPagar = contTotalPagar +  TelaPrincipal.listaCarrinho.get(i).getPreco();
+               lbPagar.setText("<R$" + contTotalPagar + ">");
+           }
+                }
     }
 
   public void inicializaTabela(){
@@ -37,7 +44,6 @@ private Cliente pessoa;
         lbPagar = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btNotaFiscal = new javax.swing.JButton();
-        btCalcular = new javax.swing.JButton();
         btRemover = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 255));
@@ -108,13 +114,6 @@ private Cliente pessoa;
             }
         });
 
-        btCalcular.setText("Calcular valor a ser pago");
-        btCalcular.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btCalcularMouseClicked(evt);
-            }
-        });
-
         btRemover.setText("Remover Item do Carrinho");
         btRemover.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -129,11 +128,9 @@ private Cliente pessoa;
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btCalcular, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btRemover, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btNotaFiscal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btRemover, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btNotaFiscal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(48, 48, 48))
         );
         layout.setVerticalGroup(
@@ -144,8 +141,6 @@ private Cliente pessoa;
                 .addComponent(btNotaFiscal)
                 .addGap(18, 18, 18)
                 .addComponent(btRemover)
-                .addGap(18, 18, 18)
-                .addComponent(btCalcular)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -181,15 +176,6 @@ private Cliente pessoa;
         janela.add(TelaPrincipal.tNota, BorderLayout.CENTER); 
         janela.pack();
     }//GEN-LAST:event_btNotaFiscalMouseClicked
-
-    private void btCalcularMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btCalcularMouseClicked
-       if (TelaPrincipal.listaCarrinho.isEmpty() == false) {
-           for (int i = 0; i < TelaPrincipal.listaCarrinho.size(); i++) {
-               contTotalPagar = contTotalPagar +  TelaPrincipal.listaCarrinho.get(i).getPreco();
-               lbPagar.setText("<R$" + contTotalPagar + ">");
-           }
-                }
-    }//GEN-LAST:event_btCalcularMouseClicked
 
     private void btRemoverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btRemoverMouseClicked
          switch(JOptionPane.showConfirmDialog(this, "Continuar?")){
@@ -227,7 +213,6 @@ private Cliente pessoa;
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btCalcular;
     private javax.swing.JButton btNotaFiscal;
     private javax.swing.JButton btRemover;
     private javax.swing.JLabel jLabel2;
