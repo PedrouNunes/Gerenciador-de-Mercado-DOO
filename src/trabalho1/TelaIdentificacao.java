@@ -153,7 +153,8 @@ public class TelaIdentificacao extends javax.swing.JPanel {
                 }
                 if (rbCliente.isSelected()) {
                     long cpf = parseLong(tfCPF.getText());
-                    Pessoa p = new Cliente(tfNome.getText(), cpf);
+                    Cliente p = new Cliente(tfNome.getText(), cpf);
+                    Supermercado.clientesNotaFiscal.add(p);
                     TelaPrincipal.tComprar = new TelaComprar(p);     
                     JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this); 
                     janela.getContentPane().remove(TelaPrincipal.tIdentificacao); 

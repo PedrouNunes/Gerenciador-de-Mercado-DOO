@@ -12,8 +12,8 @@ DefaultTableModel model;
     public TelaNotaFiscal() {
         initComponents();
         
-        lbNome.setText(TelaPrincipal.supermercado.getCliente().getNome());
-        lbCPF.setText("" + TelaPrincipal.supermercado.getCliente().getCpf());
+        lbNome.setText(Supermercado.clientesNotaFiscal.get(0).getNome());
+        lbCPF.setText("" + Supermercado.clientesNotaFiscal.get(0).getCpf());
         lbPago.setText("R$" + TelaPrincipal.supermercado.getReceber());
         
         this.model = (DefaultTableModel) this.tb_ProdutosComprados.getModel();

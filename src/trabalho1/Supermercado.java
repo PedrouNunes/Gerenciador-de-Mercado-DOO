@@ -1,21 +1,22 @@
 
 package trabalho1;
 
+import java.util.ArrayList;
+
 public class Supermercado {
-    private Cliente cliente;
+    static ArrayList<Cliente> clientesNotaFiscal;
     private Double receber;
 
-    public Supermercado(Cliente cliente, Double receber) {
-        this.cliente = cliente;
+    public Supermercado(Double receber) {
         this.receber = receber;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public static ArrayList<Cliente> getClientesNotaFiscal() {
+        return clientesNotaFiscal;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public static void setClientesNotaFiscal(ArrayList<Cliente> clientesNotaFiscal) {
+        Supermercado.clientesNotaFiscal = clientesNotaFiscal;
     }
 
     public Double getReceber() {

@@ -22,6 +22,7 @@ private Cliente pessoa;
            for (int i = 0; i < TelaPrincipal.listaCarrinho.size(); i++) {
                contTotalPagar = contTotalPagar +  TelaPrincipal.listaCarrinho.get(i).getPreco();
                lbPagar.setText("<R$" + contTotalPagar + ">");
+               TelaPrincipal.supermercado = new Supermercado(contTotalPagar);
            }
                 }
     }
@@ -172,7 +173,7 @@ private Cliente pessoa;
     private void btNotaFiscalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btNotaFiscalMouseClicked
         TelaPrincipal.tNota = new TelaNotaFiscal();
         JFrame janela = (JFrame)SwingUtilities.getWindowAncestor(this); 
-        janela.getContentPane().remove(TelaPrincipal.tCarrinho); 
+        janela.getContentPane().removeAll(); 
         janela.add(TelaPrincipal.tNota, BorderLayout.CENTER); 
         janela.pack();
     }//GEN-LAST:event_btNotaFiscalMouseClicked
@@ -196,6 +197,7 @@ private Cliente pessoa;
                 }
                 contTotalPagar -= c.getPreco();
                 lbPagar.setText("<R$" + contTotalPagar + ">");
+                TelaPrincipal.supermercado = new Supermercado(contTotalPagar);
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Selecione um Produto da tabela!", "Erro!", JOptionPane.ERROR_MESSAGE);

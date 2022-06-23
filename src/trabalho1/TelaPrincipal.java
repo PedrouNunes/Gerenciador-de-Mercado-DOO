@@ -18,7 +18,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     static TelaNotaFiscal tNota;
     public TelaPrincipal() {
         initComponents();
-        
+        Supermercado.clientesNotaFiscal = new ArrayList<Cliente>();
         tIdentificacao = new TelaIdentificacao(); 
         this.setLayout(new BorderLayout());  
         this.add(tIdentificacao, BorderLayout.CENTER); 
