@@ -44,12 +44,19 @@ DefaultTableModel model;
         jLabel7 = new javax.swing.JLabel();
         lbPago = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 0, 51));
+        setForeground(new java.awt.Color(255, 0, 51));
+
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Nome:");
 
+        lbNome.setForeground(new java.awt.Color(0, 0, 0));
         lbNome.setText("NOME");
 
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("CPF:");
 
+        lbCPF.setForeground(new java.awt.Color(0, 0, 0));
         lbCPF.setText("CPF");
 
         tb_ProdutosComprados.setModel(new javax.swing.table.DefaultTableModel(
@@ -81,8 +88,9 @@ DefaultTableModel model;
         });
         jScrollPane1.setViewportView(tb_ProdutosComprados);
 
-        jPanel1.setBackground(new java.awt.Color(255, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 0));
 
+        jLabel5.setBackground(new java.awt.Color(255, 255, 0));
         jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -102,10 +110,13 @@ DefaultTableModel model;
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Tabela de Produtos Comprados:");
 
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Total pago:");
 
+        lbPago.setForeground(new java.awt.Color(0, 0, 0));
         lbPago.setText("TOTALPAGO");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
