@@ -2,6 +2,9 @@
 package trabalho1;
 
 import java.awt.BorderLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class TelaPrincipal extends javax.swing.JFrame {
@@ -45,6 +48,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
 
    
 
